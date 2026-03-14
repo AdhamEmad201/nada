@@ -832,7 +832,7 @@
         content: "",
 
         // 👇 لو اخترت  "image"  ← حط رابط الصورة هنا
-        image: "https://www.pinterest.com/pin/5911043262214212/",
+        image: "https://www.pinterest.com/pin/142215300725360600/",
 
         // 👇 لو اخترت  "song"   ← عبّي الثلاثة دول
         link:       "https://www.pinterest.com/pin/5911043262214212/",
@@ -886,8 +886,10 @@
     } else if (TODAY.type === 'image') {
         const src = TODAY.image;
         const isPinterest = src.includes('pin.it') || src.includes('pinterest.com');
+        const isVideo    = /\.(mp4|webm|ogg)$/i.test(src);
 
         if (isPinterest) {
+            // Pinterest صور وفيديوهات — بيشتغل تلقائي
             box.innerHTML = `
                 <div class="daily-card daily-pinterest">
                     <a data-pin-do="embedPin" data-pin-width="large" href="${src}"></a>
@@ -896,7 +898,16 @@
             s.async = true; s.defer = true;
             s.src = '//assets.pinterest.com/js/pinit.js';
             document.body.appendChild(s);
+        } else if (isVideo) {
+            // فيديو من الجهاز (.mp4 وغيره)
+            box.innerHTML = `
+                <div class="daily-card daily-image">
+                    <video controls playsinline style="width:100%;border-radius:20px;display:block;">
+                        <source src="${src}" />
+                    </video>
+                </div>`;
         } else {
+            // صورة عادية
             box.innerHTML = `
                 <div class="daily-card daily-image">
                     <img src="${src}" alt="إهداء اليوم" />
