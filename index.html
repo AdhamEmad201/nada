@@ -332,6 +332,78 @@
             color: var(--main);
         }
 
+        /* ─── MESSAGE ────────────────────────────────────── */
+        #message { background: var(--pale); }
+
+        .msg-form {
+            max-width: 580px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .msg-field {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .msg-field label {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--mid);
+            letter-spacing: 1px;
+        }
+
+        .msg-field input,
+        .msg-field textarea {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: var(--dark);
+            background: #fff;
+            border: 2px solid var(--soft);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            outline: none;
+            transition: border-color .3s, box-shadow .3s;
+            resize: none;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .msg-field input:focus,
+        .msg-field textarea:focus {
+            border-color: var(--main);
+            box-shadow: 0 0 0 4px rgba(191,123,80,.12);
+        }
+
+        .msg-field input::placeholder,
+        .msg-field textarea::placeholder {
+            color: var(--soft);
+        }
+
+        .msg-btn {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--main), var(--mid));
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 2.5rem;
+            cursor: pointer;
+            align-self: center;
+            transition: transform .2s, box-shadow .2s;
+            letter-spacing: 1px;
+        }
+
+        .msg-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(191,123,80,.35);
+        }
+
         /* ─── FOOTER ──────────────────────────────────────── */
         footer {
             background: var(--dark);
@@ -448,7 +520,7 @@
         <div class="tl-item">
             <div class="tl-dot"></div>
             <p class="tl-date">بعدها بفترة 🎮</p>
-            <h3 class="tl-head">تلكك بـ Ludo</h3>
+            <h3 class="tl-head">تلكيكة على الماشي بـ Ludo</h3>
             <div class="tl-body">
                 نزلت ألعب Ludo مش عشان بحبها ..
                 بس عشانك . والأنمي ستوريز اللي كنت بنزلها عشان تردي عليها ولو مرة واحدة
@@ -464,7 +536,16 @@
                 كنت مبسوط فشخ ومش مصدق اللي بيحصل.
                 واحشني اللي كنا عليه وقتها 🤎
             </div>
-        </div>
+		</div>	
+
+			<div class="tl-item">
+				<div class="tl-dot"></div>
+				<p class="tl-date">اغانينا 🤎</p>
+				<h3 class="tl-head"> كل اغنية سمعناها سوا </h3>
+				<div class="tl-body">
+					كل اغنية بعتهالك لما عرفت ذوقك الموسيقي كنت بقولك بيها هاو بصي احنا شبه بعض ازاي 😂
+				</div>
+			</div>
 
 		
 
@@ -506,6 +587,25 @@
     </div>
 </section>
 
+
+<!-- ═══════════════ MESSAGE ═══════════════ -->
+<section id="message">
+    <p class="sec-eyebrow" style="color:var(--main)">وإنتِ كمان</p>
+    <h2 class="sec-title">سيبيلي كلمة 🤎</h2>
+    <div class="sec-rule"></div>
+
+    <form class="msg-form" action="https://formspree.io/f/xykndgeo" method="POST">
+        <input type="hidden" name="_subject" value="رسالة من ندى 🤎" />
+        <input type="hidden" name="_next" value="thanks" />
+
+
+        <div class="msg-field">
+            <textarea id="msg" name="message" rows="5" placeholder="اكتبي أي حاجة .." required></textarea>
+        </div>
+
+        <button type="submit" class="msg-btn">ابعتي الرسالة ✉️</button>
+    </form>
+</section>
 
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
