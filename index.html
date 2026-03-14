@@ -22,6 +22,180 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
+        /* ─── PASSWORD OVERLAY ───────────────────────────── */
+        #pw-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: linear-gradient(150deg, var(--dark) 0%, var(--deep) 60%, #5C2E0A 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            transition: opacity .6s ease, visibility .6s ease;
+        }
+        #pw-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        .pw-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: #fff;
+            text-shadow: 0 0 60px rgba(191,123,80,.4);
+        }
+        .pw-hint {
+            font-size: .85rem;
+            color: var(--soft);
+            letter-spacing: 3px;
+        }
+        .pw-box {
+            display: flex;
+            gap: .8rem;
+            align-items: center;
+        }
+        .pw-input {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            text-align: center;
+            color: var(--dark);
+            background: rgba(255,255,255,.1);
+            border: 2px solid rgba(191,123,80,.4);
+            border-radius: 12px;
+            padding: .8rem 1.5rem;
+            outline: none;
+            width: 180px;
+            color: #fff;
+            transition: border-color .3s, box-shadow .3s;
+        }
+        .pw-input:focus {
+            border-color: var(--main);
+            box-shadow: 0 0 0 4px rgba(191,123,80,.2);
+        }
+        .pw-btn {
+            font-family: 'Cairo', sans-serif;
+            font-size: .95rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--main), var(--mid));
+            border: none;
+            border-radius: 50px;
+            padding: .85rem 1.8rem;
+            cursor: pointer;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .pw-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(191,123,80,.35); }
+        .pw-error {
+            font-size: .85rem;
+            color: #e88;
+            height: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* ─── DAILY UPDATE ───────────────────────────────── */
+        #daily { background: var(--deep); }
+        #daily .sec-eyebrow { color: var(--light); }
+        #daily .sec-title   { color: #fff; }
+
+        .daily-card {
+            max-width: 620px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,.3);
+        }
+
+        /* quote type */
+        .daily-quote {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(191,123,80,.25);
+            border-radius: 20px;
+            padding: 3.5rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+        .daily-quote::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 9rem;
+            color: rgba(191,123,80,.1);
+            position: absolute;
+            top: -2rem; right: 2rem;
+            line-height: 1;
+        }
+        .daily-quote p {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            color: var(--soft);
+            line-height: 2;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* pinterest type */
+        .daily-pinterest {
+            display: flex;
+            justify-content: center;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        .daily-pinterest span {
+            border-radius: 20px !important;
+        }
+
+        /* image type */
+        .daily-image img {
+            width: 100%;
+            display: block;
+            border-radius: 20px;
+            object-fit: contain;
+        }
+
+        /* song type */
+        .daily-song {
+            background: rgba(255,255,255,.06);
+            border: 1px solid rgba(191,123,80,.25);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+        }
+        .daily-song .song-icon { font-size: 3rem; margin-bottom: 1rem; }
+        .daily-song .song-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: .5rem;
+        }
+        .daily-song .song-artist {
+            font-size: .9rem;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+        }
+        .daily-song a {
+            display: inline-block;
+            font-family: 'Cairo', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, var(--main), var(--mid));
+            border-radius: 50px;
+            padding: .7rem 2rem;
+            text-decoration: none;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .daily-song a:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(191,123,80,.35); }
+
+        .daily-date {
+            text-align: center;
+            font-size: .75rem;
+            color: var(--light);
+            letter-spacing: 3px;
+            margin-top: 1.5rem;
+        }
+
         body {
             font-family: 'Cairo', sans-serif;
             background: var(--cream);
@@ -424,6 +598,17 @@
 </head>
 <body>
 
+<!-- ═══════════════ PASSWORD ═══════════════ -->
+<div id="pw-overlay">
+    <h1 class="pw-title">ندى</h1>
+    <p class="pw-hint">ادخلي الكود عشان تفتحي الصفحة</p>
+    <div class="pw-box">
+        <input class="pw-input" type="password" id="pw-input" placeholder="· · · · ·" maxlength="10" />
+        <button class="pw-btn" onclick="checkPw()">ادخلي ✨</button>
+    </div>
+    <p class="pw-error" id="pw-error"></p>
+</div>
+
 <!-- ═══════════════ HERO ═══════════════ -->
 <section id="hero">
     <div class="orb orb-1"></div>
@@ -579,9 +764,8 @@
             <br><br>
             ولا الحوارات اللي عملتها مع مخاليق ربنا عشانك لما كنا في التيم و محدش فاهم ليه و لسه مستعد اعمل حوارات مع ناس اكتر عشان خاطرك 
             <br><br>
-            <em>بحبك يا ندى.</em>
             <br>
-            وحبيت تعرفي ده بطريقة حلوه زيك.
+            وحبيت تعرفي ده كله بطريقة حلوه زيك.
         </p>
         <p class="letter-sig">— Adham 🤎</p>
     </div>
@@ -607,6 +791,20 @@
     </form>
 </section>
 
+<!-- ═══════════════ DAILY UPDATE ═══════════════ -->
+<section id="daily">
+    <p class="sec-eyebrow">من ادهم</p>
+    <h2 class="sec-title">إهداء النهارده 🤎</h2>
+    <div class="sec-rule" style="background:var(--main)"></div>
+
+    <!-- ╔══════════════════════════════════════════╗ -->
+    <!-- ║         ✏️  EDIT HERE EVERY DAY          ║ -->
+    <!-- ╚══════════════════════════════════════════╝ -->
+    <div id="daily-content"></div>
+    <p class="daily-date" id="daily-date"></p>
+
+</section>
+
 <!-- ═══════════════ FOOTER ═══════════════ -->
 <footer>
       <strong></strong>  <strong></strong>  <strong></strong>
@@ -614,8 +812,113 @@
 
 
 <script>
+
+    // ███████████████████████████████████████████████
+    // ██                                           ██
+    // ██   ✏️  ZONE 1 — التحديث اليومي            ██
+    // ██   غيّر هنا كل يوم وخلص                  ██
+    // ██                                           ██
+    // ███████████████████████████████████████████████
+
+    const TODAY = {
+
+        // 👇 النوع — اختار واحد بس واحذف الباقي
+        type: "image",
+        //  "quote"  ← جملة أو كلام
+        //  "image"  ← صورة
+        //  "song"   ← أغنية
+
+        // 👇 لو اخترت  "quote"  ← اكتب جملتك هنا
+        content: "",
+
+        // 👇 لو اخترت  "image"  ← حط رابط الصورة هنا
+        image: "https://www.pinterest.com/pin/5911043262214212/",
+
+        // 👇 لو اخترت  "song"   ← عبّي الثلاثة دول
+        link:       "https://www.pinterest.com/pin/5911043262214212/",
+
+    };
+
+    // ███████████████████████████████████████████████
+    // ██                                           ██
+    // ██   ✏️  ZONE 2 — الباسورد                  ██
+    // ██   لو عاوز تغيّر الكود غيّره هنا بس       ██
+    // ██                                           ██
+    // ███████████████████████████████████████████████
+
+    const PW = "13922";
+
+    // ⛔⛔⛔  متعدلش أي حاجة تحت السطر ده  ⛔⛔⛔
+
+    function checkPw() {
+        const val = document.getElementById('pw-input').value.trim();
+        if (val === PW) {
+            document.getElementById('pw-overlay').classList.add('hidden');
+        } else {
+            const err = document.getElementById('pw-error');
+            err.textContent = "الكود غلط، حاولي تاني 🙈";
+            document.getElementById('pw-input').value = '';
+            setTimeout(() => err.textContent = '', 2500);
+        }
+    }
+
+    document.getElementById('pw-input').addEventListener('keydown', e => {
+        if (e.key === 'Enter') checkPw();
+    });
+
+    // sessionStorage removed — يطلب الباسورد كل مرة
+
+    // ── daily content renderer ──
+    const box  = document.getElementById('daily-content');
+    const dateEl = document.getElementById('daily-date');
+
+    const now = new Date();
+    dateEl.textContent = now.toLocaleDateString('ar-EG', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+    if (TODAY.type === 'quote') {
+        box.innerHTML = `
+            <div class="daily-card">
+                <div class="daily-quote">
+                    <p>${TODAY.content}</p>
+                </div>
+            </div>`;
+
+    } else if (TODAY.type === 'image') {
+        const src = TODAY.image;
+        const isPinterest = src.includes('pin.it') || src.includes('pinterest.com');
+
+        if (isPinterest) {
+            box.innerHTML = `
+                <div class="daily-card daily-pinterest">
+                    <a data-pin-do="embedPin" data-pin-width="large" href="${src}"></a>
+                </div>`;
+            const s = document.createElement('script');
+            s.async = true; s.defer = true;
+            s.src = '//assets.pinterest.com/js/pinit.js';
+            document.body.appendChild(s);
+        } else {
+            box.innerHTML = `
+                <div class="daily-card daily-image">
+                    <img src="${src}" alt="إهداء اليوم" />
+                </div>`;
+        }
+
+    } else if (TODAY.type === 'song') {
+        box.innerHTML = `
+            <div class="daily-card">
+                <div class="daily-song">
+                    <div class="song-icon">🎵</div>
+                    <p class="song-name">${TODAY.songName}</p>
+                    <p class="song-artist">${TODAY.songArtist}</p>
+                    <a href="${TODAY.link}" target="_blank">استمعي دلوقتي ↗</a>
+                </div>
+            </div>`;
+    }
+
+    // ── scroll restore ──
     history.scrollRestoration = 'manual';
     window.scrollTo(0, 0);
+
 </script>
 </body>
 </html>
