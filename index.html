@@ -1,0 +1,521 @@
+<!DOCTYPE HTML>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ندى 🤎</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark:       #1A0800;
+            --deep:       #3D1C00;
+            --mid:        #7A3E1A;
+            --main:       #BF7B50;
+            --light:      #D49070;
+            --soft:       #E8C4A0;
+            --pale:       #F5E6D8;
+            --cream:      #FFFCF8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* ─── HERO ─────────────────────────────────────────── */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(150deg, var(--dark) 0%, var(--deep) 50%, #5C2E0A 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 60% 50% at 50% 60%, rgba(191,123,80,.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        /* floating orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: .25;
+            animation: drift linear infinite;
+        }
+        .orb-1 { width:300px; height:300px; background:var(--main);  top:-80px;  left:-60px;  animation-duration:18s; }
+        .orb-2 { width:200px; height:200px; background:var(--light); bottom:40px; right:-40px; animation-duration:14s; animation-delay:-7s; }
+        .orb-3 { width:150px; height:150px; background:var(--soft);  top:40%;    right:15%;   animation-duration:22s; animation-delay:-3s; }
+
+        @keyframes drift {
+            0%   { transform: translateY(0)    rotate(0deg); }
+            50%  { transform: translateY(-40px) rotate(180deg); }
+            100% { transform: translateY(0)    rotate(360deg); }
+        }
+
+        .hero-tag {
+            font-size: .75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp .9s ease .4s forwards;
+        }
+
+        .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(6rem, 18vw, 12rem);
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp .9s ease .7s forwards;
+            text-shadow: 0 0 80px rgba(191,123,80,.4);
+        }
+
+        .hero-sub {
+            color: var(--soft);
+            font-size: clamp(.95rem, 2.5vw, 1.15rem);
+            font-weight: 300;
+            max-width: 480px;
+            line-height: 2;
+            margin-bottom: 3.5rem;
+            opacity: 0;
+            animation: fadeUp .9s ease 1s forwards;
+        }
+
+        .hero-arrow {
+            color: var(--light);
+            font-size: .8rem;
+            letter-spacing: 3px;
+            text-decoration: none;
+            opacity: 0;
+            animation: fadeUp .9s ease 1.3s forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            transition: color .3s;
+        }
+        .hero-arrow:hover { color: var(--soft); }
+        .hero-arrow span { font-size: 1.4rem; animation: bob 2s ease-in-out infinite; }
+
+        @keyframes bob {
+            0%,100% { transform: translateY(0); }
+            50%      { transform: translateY(10px); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity:0; transform:translateY(30px); }
+            to   { opacity:1; transform:translateY(0); }
+        }
+
+        /* ─── SHARED SECTION STYLES ──────────────────────── */
+        section { padding: 6rem 2rem; }
+
+        .sec-eyebrow {
+            text-align: center;
+            font-size: .75rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--main);
+            margin-bottom: .8rem;
+        }
+
+        .sec-title {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--dark);
+            margin-bottom: .6rem;
+        }
+
+        .sec-rule {
+            width: 55px;
+            height: 3px;
+            background: var(--main);
+            border-radius: 3px;
+            margin: 0 auto 3.5rem;
+        }
+
+        /* ─── REASONS ─────────────────────────────────────── */
+        #reasons { background: var(--cream); }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.8rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 2.5rem 1.8rem;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(26,8,0,.07);
+            border-bottom: 4px solid var(--main);
+            transition: transform .3s, box-shadow .3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(191,123,80,.04), transparent);
+            opacity: 0;
+            transition: opacity .3s;
+        }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 16px 45px rgba(26,8,0,.13); }
+        .card:hover::before { opacity: 1; }
+
+        .card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--pale);
+            line-height: 1;
+            margin-bottom: .3rem;
+        }
+
+        .card-icon { font-size: 2rem; margin-bottom: .8rem; }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: .6rem;
+        }
+
+        .card-text {
+            font-size: .9rem;
+            color: var(--mid);
+            line-height: 1.9;
+        }
+
+        /* ─── TIMELINE ────────────────────────────────────── */
+        #timeline { background: var(--pale); }
+
+        .tl {
+            max-width: 620px;
+            margin: 0 auto;
+            position: relative;
+            padding-right: 2.5rem;
+        }
+
+        .tl::before {
+            content: '';
+            position: absolute;
+            right: 7px;
+            top: 8px;
+            bottom: 8px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--main), var(--soft));
+            border-radius: 2px;
+        }
+
+        .tl-item {
+            position: relative;
+            padding-right: 2rem;
+            margin-bottom: 2.8rem;
+        }
+
+        .tl-dot {
+            position: absolute;
+            right: -0.45rem;
+            top: 4px;
+            width: 16px;
+            height: 16px;
+            background: var(--main);
+            border-radius: 50%;
+            border: 3px solid var(--pale);
+            box-shadow: 0 0 0 3px rgba(191,123,80,.25);
+        }
+
+        .tl-date {
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--main);
+            margin-bottom: .4rem;
+        }
+
+        .tl-head {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: .4rem;
+        }
+
+        .tl-body {
+            font-size: .9rem;
+            color: var(--mid);
+            line-height: 1.85;
+            background: #fff;
+            padding: 1rem 1.2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 14px rgba(26,8,0,.05);
+        }
+
+        /* ─── LETTER ──────────────────────────────────────── */
+        #letter {
+            background: linear-gradient(150deg, var(--deep) 0%, var(--dark) 100%);
+        }
+
+        #letter .sec-title { color: #fff; }
+
+        .letter-wrap {
+            max-width: 700px;
+            margin: 0 auto;
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(191,123,80,.25);
+            border-radius: 24px;
+            padding: 4rem 3.5rem;
+            position: relative;
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .letter-wrap::before {
+            content: '\201C';
+            font-family: 'Playfair Display', serif;
+            font-size: 12rem;
+            color: rgba(191,123,80,.08);
+            position: absolute;
+            top: -3rem;
+            right: 2rem;
+            line-height: 1;
+            pointer-events: none;
+        }
+
+        .letter-body {
+            font-size: 1.05rem;
+            line-height: 2.4;
+            color: var(--soft);
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .letter-body em {
+            font-style: normal;
+            color: var(--light);
+            font-weight: 600;
+        }
+
+        .letter-sig {
+            margin-top: 2.5rem;
+            text-align: left;
+            direction: ltr;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--main);
+        }
+
+        /* ─── FOOTER ──────────────────────────────────────── */
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2.2rem 1rem;
+            font-size: .85rem;
+            color: var(--mid);
+            letter-spacing: 1px;
+        }
+        footer strong { color: var(--main); }
+
+        /* ─── RESPONSIVE ──────────────────────────────────── */
+        @media (max-width: 580px) {
+            .letter-wrap { padding: 2.5rem 1.5rem; }
+            .tl { padding-right: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <p class="hero-tag">لـ من تستحق كل كلمة</p>
+    <h1 class="hero-name">ندى</h1>
+    <p class="hero-sub">في ناس بتجي في حياة الانسانو بتعمل فيها فرق<br> و انتي بقيتي اكتر حاجة فارقة معايا في حياتي</p>
+    <a class="hero-arrow" href="#reasons">
+        لو عاوزه تعرفي ليه دوسي هنا 
+        <span>↓</span>
+    </a>
+</section>
+
+
+<!-- ═══════════════ REASONS ═══════════════ -->
+<section id="reasons">
+    <p class="sec-eyebrow">ليه بالظبط</p>
+    <h2 class="sec-title">إنتِ مختلفة</h2>
+    <div class="sec-rule"></div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="card-num">01</div>
+            <div class="card-icon">🌸</div>
+            <h3 class="card-title">قوة جوا طيبة</h3>
+            <p class="card-text">جميلة وطيبة وقوية في نفس الوقت — ودي combination نادرة جداً</p>
+        </div>
+
+        <div class="card">
+            <div class="card-num">02</div>
+            <div class="card-icon">🤝</div>
+            <h3 class="card-title">من غير أحكام</h3>
+            <p class="card-text">كل مرة وقعت لقيتك هناك .. من غير ما تحكمي عليا أو تبطلي تصدقيني</p>
+        </div>
+
+        <div class="card">
+            <div class="card-num">03</div>
+            <div class="card-icon">🔁</div>
+            <h3 class="card-title">دايما بترجعي</h3>
+            <p class="card-text">رغم الخلافات والبعد .. دايما كانت ترجع — ودي مش حاجة عادية خالص</p>
+        </div>
+
+        <div class="card">
+            <div class="card-num">04</div>
+            <div class="card-icon">🎵</div>
+            <h3 class="card-title">نفس الـ Vibe</h3>
+            <p class="card-text">ذوقنا في الأغاني واتفاقنا إننا منتفقش — في حاجة حلوة في ده</p>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+<section id="timeline">
+    <p class="sec-eyebrow">الحكاية من الأول</p>
+    <h2 class="sec-title">لحظات مش ناسيها </h2>
+    <div class="sec-rule"></div>
+
+    <div class="tl">
+
+		<div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-date"> اول يوم❤️</p>
+            <h3 class="tl-head">   في المديرية يوم الانترفيو </h3>
+            <div class="tl-body">
+                لما من اول مره شوفتك فيها و انتي قاعده لابسه اسود في اسود قولت انا عاوز اكمل حياتي معاكي🤎
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-date">26 أغسطس 2022</p>
+            <h3 class="tl-head">أول مسج 💬</h3>
+            <div class="tl-body">
+                بعتلها القبول في YLY .. مكنتش عارف إن المسج الصغيره دي
+                هتبقى بداية حاجة كبيرة بالنسبالي
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-date">13 سبتمبر 2022</p>
+            <h3 class="tl-head">التريق والضحك 😂</h3>
+            <div class="tl-body">
+                اتريقنا على إيفنت "لا للانتحار" مع بعض —
+                كانت بداية الكلام الحلو اللي خلاني أعرف إن في حاجة مختلفة فيكي  
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-date">بعدها بفترة 🎮</p>
+            <h3 class="tl-head">تلكك بـ Ludo</h3>
+            <div class="tl-body">
+                نزلت ألعب Ludo مش عشان بحبها ..
+                بس عشانك . والأنمي ستوريز اللي كنت بنزلها عشان تردي عليها ولو مرة واحدة
+            </div>
+        </div>
+
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <p class="tl-date">يوم مش ناسيه 🚌</p>
+            <h3 class="tl-head">السندوتشات في الأتوبيس</h3>
+            <div class="tl-body">
+                لما بعتيلي السندوتشات وإحنا رايحين العاصمة ..
+                كنت مبسوط فشخ ومش مصدق اللي بيحصل.
+                واحشني اللي كنا عليه وقتها 🤎
+            </div>
+        </div>
+
+		
+
+    </div>
+</section>
+
+
+<!-- ═══════════════ LETTER ═══════════════ -->
+<section id="letter">
+    <p class="sec-eyebrow" style="color:var(--light)">من القلب</p>
+    <h2 class="sec-title">ندى</h2>
+    <div class="sec-rule"></div>
+
+    <div class="letter-wrap">
+        <p class="letter-body">
+            مش عارف أبدأ منين .. بس هبدأ بإن
+            <em>من يوم 26 أغسطس 2022 و انتي مرحتيش من بالي.</em>
+            <br><br>
+            كنت بتلكك بأي حاجة عشان أكلمك —
+            لودو .. أنمي ستوريز .. بفتح اي كلا معاكي لما تبعتيلي اي أسئلة عن التيم —
+            كل ده كان مش عشاني،
+            كان <em>عشانك إنتِ.</em>
+            <br><br>
+            اللي حبيته فيكِ مش بس إنك جميلة.
+            اللي حبيته إنك <em>شايفاني</em> من غير ما تحكمي عليا.
+            كل مرة وقعت لقيتك هناك.
+            وكل مرة بعدنا .. رجعنا.
+            <br><br>
+            يوم السندوتشات في الأتوبيس —
+            اللحظة دي لسه في بالي وهتفضل.
+            <br><br>
+            ولا الحوارات اللي عملتها مع مخاليق ربنا عشانك لما كنا في التيم و محدش فاهم ليه و لسه مستعد اعمل حوارات مع ناس اكتر عشان خاطرك 
+            <br><br>
+            <em>بحبك يا ندى.</em>
+            <br>
+            وحبيت تعرفي ده بطريقة حلوه زيك.
+        </p>
+        <p class="letter-sig">— Adham 🤎</p>
+    </div>
+</section>
+
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+      <strong></strong>  <strong></strong>  <strong></strong>
+</footer>
+
+
+<script>
+    history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+</script>
+</body>
+</html>
