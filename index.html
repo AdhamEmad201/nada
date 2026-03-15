@@ -188,6 +188,18 @@
         }
         .daily-song a:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(191,123,80,.35); }
 
+        .daily-caption {
+            max-width: 620px;
+            margin: 1.5rem auto 0;
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: var(--soft);
+            line-height: 1.9;
+            padding: 0 1rem;
+        }
+
         .daily-date {
             text-align: center;
             font-size: .75rem;
@@ -601,7 +613,7 @@
 <!-- ═══════════════ PASSWORD ═══════════════ -->
 <div id="pw-overlay">
     <h1 class="pw-title">ندى</h1>
-    <p class="pw-hint">دخلي الكود عشان تفتحي الصفحة</p>
+    <p class="pw-hint">ادخلي الكود عشان تفتحي الصفحة</p>
     <div class="pw-box">
         <input class="pw-input" type="password" id="pw-input" placeholder="· · · · ·" maxlength="10" />
         <button class="pw-btn" onclick="checkPw()">ادخلي ✨</button>
@@ -615,9 +627,9 @@
     <div class="orb orb-2"></div>
     <div class="orb orb-3"></div>
 
-    <p class="hero-tag">لـ من تستحق كل اكلام الحلو و اكتر</p>
+    <p class="hero-tag">لـ من تستحق كل كلمة</p>
     <h1 class="hero-name">ندى</h1>
-    <p class="hero-sub">في ناس بتجي في حياة الانسان و بتعمل فيها فرق<br> و انتي بقيتي اكتر حاجة فارقة معايا في حياتي</p>
+    <p class="hero-sub">في ناس بتجي في حياة الانسانو بتعمل فيها فرق<br> و انتي بقيتي اكتر حاجة فارقة معايا في حياتي</p>
     <a class="hero-arrow" href="#reasons">
         لو عاوزه تعرفي ليه دوسي هنا 
         <span>↓</span>
@@ -636,22 +648,22 @@
         <div class="card">
             <div class="card-num">01</div>
             <div class="card-icon">🌸</div>
-            <h3 class="card-title">مثالية</h3>
-            <p class="card-text">جميلة وطيبة وقوية في نفس الوقت و دمك خفيف — ودي combination نادرة جداً</p>
+            <h3 class="card-title">قوة جوا طيبة</h3>
+            <p class="card-text">جميلة وطيبة وقوية في نفس الوقت — ودي combination نادرة جداً</p>
         </div>
 
         <div class="card">
             <div class="card-num">02</div>
             <div class="card-icon">🤝</div>
             <h3 class="card-title">من غير أحكام</h3>
-            <p class="card-text">كل مرة وقعت لقيتك هنا .. من غير ما تحكمي عليا أو تبطلي تصدقيني</p>
+            <p class="card-text">كل مرة وقعت لقيتك هناك .. من غير ما تحكمي عليا أو تبطلي تصدقيني</p>
         </div>
 
         <div class="card">
             <div class="card-num">03</div>
             <div class="card-icon">🔁</div>
             <h3 class="card-title">دايما بترجعي</h3>
-            <p class="card-text">رغم الخلافات والبعد .. دايما كنتي بترجعي— ودي مش حاجة عادية خالص</p>
+            <p class="card-text">رغم الخلافات والبعد .. دايما كانت ترجع — ودي مش حاجة عادية خالص</p>
         </div>
 
         <div class="card">
@@ -695,7 +707,7 @@
         <div class="tl-item">
             <div class="tl-dot"></div>
             <p class="tl-date">13 سبتمبر 2022</p>
-            <h3 class="tl-head">التريقة و الضحك 😂</h3>
+            <h3 class="tl-head">التريق والضحك 😂</h3>
             <div class="tl-body">
                 اتريقنا على إيفنت "لا للانتحار" مع بعض —
                 كانت بداية الكلام الحلو اللي خلاني أعرف إن في حاجة مختلفة فيكي  
@@ -750,8 +762,9 @@
             <em>من يوم 26 أغسطس 2022 و انتي مرحتيش من بالي.</em>
             <br><br>
             كنت بتلكك بأي حاجة عشان أكلمك —
-            لودو .. أنمي ستوريز .. بفتح اي كلام معاكي لما تبعتيلي اي أسئلة عن التيم —
-            كل ده كان تلقائيا بدون وعي مني لقيتني بتجر،
+            لودو .. أنمي ستوريز .. بفتح اي كلا معاكي لما تبعتيلي اي أسئلة عن التيم —
+            كل ده كان مش عشاني،
+            كان <em>عشانك إنتِ.</em>
             <br><br>
             اللي حبيته فيكِ مش بس إنك جميلة.
             اللي حبيته إنك <em>شايفاني</em> من غير ما تحكمي عليا.
@@ -821,20 +834,23 @@
 
     const TODAY = {
 
-        // 👇 النوع — اختار واحد بس واحذف الباقي
+        // 👇 النوع — اختار واحد بس
         type: "image",
         //  "quote"  ← جملة أو كلام
-        //  "image"  ← صورة
+        //  "image"  ← صورة أو فيديو
         //  "song"   ← أغنية
 
         // 👇 لو اخترت  "quote"  ← اكتب جملتك هنا
-        content: "وأنتِ يا ميلينا لو أحبَكِ مليون فأنا منهم، وإذا أحبَكِ واحد فهذا أنا، وإذا لم يحبك أحد فاعلمي حينها أنّی مت",
+        content: "",
 
         // 👇 لو اخترت  "image"  ← حط رابط الصورة هنا
         image: "bd69bc4b8568b49047c8c45a193b0b0e.jpg",
 
-        // 👇 لو اخترت  "song"   ← عبّي الثلاثة دول
-        link:       "https://www.pinterest.com/pin/5911043262214212/",
+        // 👇 لو اخترت  "song"   ← حط الرابط هنا
+        link: "https://www.pinterest.com/pin/1618549864746601/",
+
+        // 👇 اختياري — جملة تحت الصورة/الأغنية (سيبها "" لو مش عاوز)
+        caption: "حد اعرفه كده",
 
     };
 
@@ -888,15 +904,28 @@
         const isVideo    = /\.(mp4|webm|ogg)$/i.test(src);
 
         if (isPinterest) {
-            // Pinterest صور وفيديوهات — بيشتغل تلقائي
-            box.innerHTML = `
-                <div class="daily-card daily-pinterest">
-                    <a data-pin-do="embedPin" data-pin-width="large" href="${src}"></a>
-                </div>`;
-            const s = document.createElement('script');
-            s.async = true; s.defer = true;
-            s.src = '//assets.pinterest.com/js/pinit.js';
-            document.body.appendChild(s);
+            const pinMatch = src.match(/\/pin\/(\d+)/);
+            if (pinMatch) {
+                // عنده ID — بيعرض الصورة/الفيديو مباشرةً
+                const pinId = pinMatch[1];
+                box.innerHTML = `
+                    <div class="daily-card daily-pinterest">
+                        <iframe
+                            src="https://assets.pinterest.com/ext/embed.html?id=${pinId}"
+                            scrolling="no" frameborder="0" allowtransparency="true"
+                            style="width:100%;min-height:420px;border:none;border-radius:20px;display:block;">
+                        </iframe>
+                    </div>`;
+            } else {
+                // رابط مختصر pin.it — بيفتحه في تاب جديد
+                box.innerHTML = `
+                    <div class="daily-card">
+                        <div class="daily-song">
+                            <div class="song-icon">📌</div>
+                            <a href="${src}" target="_blank">شوفي الصورة 🤎</a>
+                        </div>
+                    </div>`;
+            }
         } else if (isVideo) {
             // فيديو من الجهاز (.mp4 وغيره)
             box.innerHTML = `
@@ -921,6 +950,14 @@
                     <a href="${TODAY.link}" target="_blank">استمعي دلوقتي ↗</a>
                 </div>
             </div>`;
+    }
+
+    // ── caption ──
+    if (TODAY.caption && TODAY.caption.trim() !== "") {
+        const cap = document.createElement("p");
+        cap.className = "daily-caption";
+        cap.textContent = TODAY.caption;
+        document.getElementById("daily-content").appendChild(cap);
     }
 
     // ── scroll restore ──
